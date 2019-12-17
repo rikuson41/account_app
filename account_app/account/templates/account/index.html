@@ -1,0 +1,50 @@
+{% load static %}
+{% load humanize %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/style.css' %}" />
+</head>
+
+<body>
+    <h1><a href="{% url 'index' %}">{{ title }}</a></h1>
+    <p>{{ message|safe }}</p>
+    <a href="{% url 'create' %}">入力する</a>
+    <a href="{% url 'find' %}">月ごとに見る</a>
+    <table>
+        <tr>
+            <th>カテゴリ</th>
+            <th>名前</th>
+            <th>値段</th>
+            <th>日付</th>
+        </tr>
+    {% for item in data %}
+        <tr>
+            <td>{{ item.category }}</td>
+            <td>{{ item.name }}</td>
+            <td>{{ item.price|intcomma }}円</td>
+            <td>{{ item.created_at }}</td>
+            <td><a href="{% url 'edit' item.id %}">編集</a></td>
+            <td><a href="{% url 'delete' item.id %}">削除</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <div class="pagination">
+        {% if data.has_previous %}
+            <a href="{% url 'index' %}">&laquo;first</a>
+            <a href="{% url 'index' %}{{ data.previous_page_number }}">&laquo;prev</a>
+        {% endif %}
+        <span calss="current">
+            [{{ data.number }}/{{ data.paginator.num_page }}]
+        </span>
+        {% if data.has_next %}
+            <a href="{% url 'index' %}{{ data.next_page_number }}">next&raquo;</a>
+            <a href="{% url 'index' %}{{ data.next_page_number }}">last&raquo;</a>
+        {% endif %}
+    </div>
+</body>
+
+</html>
