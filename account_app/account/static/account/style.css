@@ -1,0 +1,62 @@
+body {
+  font-family: "Avenir Next";
+}
+
+table {
+  margin: 40px auto 10px auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+table tr th {
+  background-color: rgb(0, 183, 255);
+  color: white;
+  padding: 4px 15px;
+  border-width: 2px;
+}
+
+table tr td {
+  background-color: #eee;
+  color: #666;
+  padding: 4px;
+  border-width: 4px;
+}
+
+table h1 {
+  margin:  5px auto;
+  text-align: center;
+}
+
+.header {
+  background-color: #26cad048;
+  color: #fff;
+  height: 100px;
+}
+
+.header-logo {
+  color: #fff;
+  font-size: 40px;
+  padding: 20px 40px;
+}
+
+.pagination {
+  margin: 10px auto;
+  text-align: center;
+}
+
+.message {
+  font-size: 40px;
+  margin-bottom: 5px;
+  padding-left: 40px;
+}
+
+.find {
+  padding-left: 40px;
+  font-size: 23px;
+}
+
+.create {
+  margin-top: 10px;
+  font-size: 40px;
+  text-align: center;
+}

@@ -86,8 +86,11 @@ def find(request, num=1):
         price = OutGo.objects\
             .filter(created_at__month=month, created_at__year=str(year))\
             .aggregate(Sum('price'))
-        price_sum = '{:,}'.format(price['price__sum'])
-        msg = str(year) + '年' + str(month) + '月: ' + price_sum + '円'
+        if (price['price__sum']):
+            price_sum = '{:,}'.format(price['price__sum'])
+            msg = str(year) + '年' + str(month) + '月: ' + price_sum + '円'
+        else:
+            msg = 'データがありません。'
     else:
         msg = '調べたい年月を入力してください'
         form = FindForm()

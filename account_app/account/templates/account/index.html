@@ -2,8 +2,8 @@
 {% load humanize %}
 
 {% block contents %}
-<a href="{% url 'create' %}">入力する</a>
-<a href="{% url 'find' %}">月ごとに見る</a>
+<div class="find"><a href="{% url 'find' %}">月ごとに見る</a></div>
+<div class="create"><a href="{% url 'create' %}">入力する</a></div>
 {% endblock %}
 
 {% block table %}
@@ -30,15 +30,15 @@
 {% block pagination %}
 <div class="pagination">
     {% if data.has_previous %}
-    <a href="{% url 'index' %}">&laquo;first</a>
-    <a href="{% url 'index' %}{{ data.previous_page_number }}">&laquo;prev</a>
+    <a href="{% url 'index' %}">&laquo;最初</a>
+    <a href="{% url 'index' %}{{ data.previous_page_number }}">&laquo;前</a>
     {% endif %}
     <span calss="current">
         [{{ data.number }}/{{ data.paginator.num_page }}]
     </span>
     {% if data.has_next %}
-    <a href="{% url 'index' %}{{ data.next_page_number }}">next&raquo;</a>
-    <a href="{% url 'index' %}{{ data.next_page_number }}">last&raquo;</a>
+    <a href="{% url 'index' %}{{ data.next_page_number }}">次&raquo;</a>
+    <a href="{% url 'index' %}{{ data.next_page_number }}">最後&raquo;</a>
     {% endif %}
 </div>
 {% endblock %}

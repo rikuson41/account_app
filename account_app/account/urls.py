@@ -9,4 +9,5 @@ urlpatterns = [
     path('edit/<int:num>', views.edit, name='edit'),
     path('delete/<int:num>', views.delete, name='delete'),
     path('find', views.find, name='find'),
+    path('find<int:num>', views.find, name='find')
  ]
