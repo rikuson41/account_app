@@ -1,0 +1,26 @@
+{% load static %}
+{% load humanize %}
+<!doctype html>
+<html lang="ja">
+
+<head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'account/css/style.css' %}" />
+</head>
+
+<body>
+    <h1><a href="{% url 'index' %}">{{ title }}</a></h1>
+    <p>{{ message|safe }}</p>
+
+    {% block contents %}
+    {% endblock %}
+
+    {% block table %}
+    {% endblock %}
+    
+    {% block pagination %}
+    {% endblock %}
+</body>
+
+</html>

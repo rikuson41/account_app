@@ -64,6 +64,7 @@ def delete(request, num):
         outgo.delete()
         return redirect(to='/account')
     params = {
+        'message': '※以下のデータを削除します。',
         'title': '家計簿',
         'id': num,
         'obj': outgo,
