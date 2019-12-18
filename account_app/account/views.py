@@ -34,8 +34,8 @@ def create(request):
         obj = OutGo()
         outgo = OutGoForm(request.POST, instance=obj)
         outgo.save()
-        return redirect(to='/account')
     params = {
+        'message': '支出を入力してください',
         'title': '家計簿',
         'form': OutGoForm(),
     }
@@ -86,6 +86,7 @@ def find(request, num=1):
         price = OutGo.objects\
             .filter(created_at__month=month, created_at__year=str(year))\
             .aggregate(Sum('price'))
+        # 入力のされた月にデータがあるかないか
         if (price['price__sum']):
             price_sum = '{:,}'.format(price['price__sum'])
             msg = str(year) + '年' + str(month) + '月: ' + price_sum + '円'
